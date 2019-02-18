@@ -100,9 +100,10 @@ while 1:
         print(requests_dict['confidence'],"best:",best_so_far)
 
         if requests_dict['confidence'] > custom_confidence :
+            fileName = FOUND_DIR + str(time.time()) + str(requests_dict['confidence']) + '.jpeg'
             print("Writing face with ", requests_dict['confidence'], " confidence to file...")
             try:
-                with open(FOUND_DIR + str(time.time())+'.jpeg','wb') as f:
+                with open(fileName,'wb') as f:
                     f.write(face_image.content)
                     f.close()
             except:
