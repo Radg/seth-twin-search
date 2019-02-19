@@ -14,6 +14,12 @@ cd set-twin-search
 chmod +x face.py
 ```
 
+Check path to python executable in first line of script, you can locate in using:
+
+```
+which python3
+```
+
 ## Requirements
 
 You'll need API key and secret from http://faceplusplus.com
