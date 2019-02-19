@@ -1,6 +1,7 @@
 # Seth's "twins" from thispersondoesnotexist.com
 
 Searching for the Seth Macfarlane's twins on https://thispersondoesnotexist.com 
+
 ![](https://www.biography.com/.image/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE1ODA0OTcxOTI3NzAxMDA1/seth-macfarlane-20624525-1-402.jpg)
 
 
