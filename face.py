@@ -21,8 +21,8 @@ args = parser.parse_args()
 custom_confidence = args.confidence
 how_many = args.how_many
 
-APIKEY = "Rvcv15m6FObWAEAGJG3grXkomuYXLRs6"
-APISEC = "stB_OyASBfOrtaU7UWkLVYy1UhpqdjWm"
+APIKEY = "********"
+APISEC = "********"
 APIURL_CREATE = "https://api-us.faceplusplus.com/facepp/v3/faceset/create"
 APIURL_COMPARE = "https://api-us.faceplusplus.com/facepp/v3/compare"
 APIURL_DETECT = 'https://api-us.faceplusplus.com/facepp/v3/detect'
