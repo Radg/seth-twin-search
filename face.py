@@ -21,8 +21,8 @@ args = parser.parse_args()
 custom_confidence = args.confidence
 how_many = args.how_many
 
-APIKEY = "*********"
-APISEC = "*********"
+APIKEY = "Rvcv15m6FObWAEAGJG3grXkomuYXLRs6"
+APISEC = "stB_OyASBfOrtaU7UWkLVYy1UhpqdjWm"
 APIURL_CREATE = "https://api-us.faceplusplus.com/facepp/v3/faceset/create"
 APIURL_COMPARE = "https://api-us.faceplusplus.com/facepp/v3/compare"
 APIURL_DETECT = 'https://api-us.faceplusplus.com/facepp/v3/detect'
@@ -41,7 +41,11 @@ try:
     my_face_data = requests.post(url = APIURL_DETECT, data = my_face_post)
 except:
     print("Error requesting face data!", my_face_data.status_code, my_face_data.reason)
-print("...done")
+print("...done with status_code = " + str(my_face_data.status_code))
+
+if my_face_data.status_code != 200:
+    print("Abnormal status_code (" + str(my_face_data.status_code) + "), exiting.")
+    exit()
 
 try:
     print("Parsing face data JSON...")
@@ -50,9 +54,9 @@ except:
     print("Exception raised while parsing JSON!")
 print("...done.")
 
-if not my_face_dict[faces]: # Checking is there any face detected
+if not my_face_dict['faces'][0]: # Checking is there any face detected
     print("No face detected on image: ", IMG_URL)
-    break
+    exit(0)
 
 #create a face set (by offical api document) to store the token id, or the token id would be deleted after 72 hours
 face_set_post = {'api_key':APIKEY, 
@@ -121,4 +125,4 @@ while counter <= how_many:
         except:
             print("Error writing file!")
 
-    print(counter + "/" + how_many " found")    
+    print(str(counter) + "/" + str(how_many) + " found")    
