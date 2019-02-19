@@ -31,7 +31,6 @@ IMG_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Seth_MacFar
 FOUND_DIR = "twinsfound/"
 UNDETECTED_DIR = "nofacedetected/"
 
-#my_face_image_file = {'image_file':('face',open(my_face_file,'rb'))}
 my_face_post = {'api_key': APIKEY,
                 'api_secret': APISEC,
         		'image_url': IMG_URL,
@@ -42,7 +41,6 @@ try:
     my_face_data = requests.post(url = APIURL_DETECT, data = my_face_post)
 except:
     print("Error requesting face data!", my_face_data.status_code, my_face_data.reason)
-#print(my_face_data.status_code, my_face_data.reason)
 print("...done")
 
 try:
@@ -51,6 +49,10 @@ try:
 except:
     print("Exception raised while parsing JSON!")
 print("...done.")
+
+if not my_face_dict[faces]: # Checking is there any face detected
+    print("No face detected on image: ", IMG_URL)
+    break
 
 #create a face set (by offical api document) to store the token id, or the token id would be deleted after 72 hours
 face_set_post = {'api_key':APIKEY, 
@@ -66,7 +68,7 @@ except:
     exit()
 print("...done with status_code ", postFaceSet.status_code)
 
-while 1:
+while counter <= how_many:
 
     print("Getting new thispersondoesnotexist face...")
     try:
@@ -109,7 +111,7 @@ while 1:
             except:
                 print("Error writing file!")
             counter += 1
-    else:
+    else: # This will be weird
         fileName = UNDETECTED_DIR + str(time.time())+'.jpeg'
         print("No face detected, so let's write this image for review to file" + fileName + "...")
         try:
@@ -118,8 +120,5 @@ while 1:
                 f.close()
         except:
             print("Error writing file!")
-
-    if counter > how_many :
-        break
 
     print(counter, " found")    
