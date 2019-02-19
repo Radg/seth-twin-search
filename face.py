@@ -121,4 +121,4 @@ while counter <= how_many:
         except:
             print("Error writing file!")
 
-    print(counter, " found")    
+    print(counter + "/" + how_many " found")    
